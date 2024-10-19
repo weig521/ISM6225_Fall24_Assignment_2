@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Assignment_2
 {
@@ -28,7 +29,7 @@ namespace Assignment_2
 
             // Question 4: Find Maximum Product of Three Numbers
             Console.WriteLine("Question 4:");
-            int[] nums4 = { 1, 2, 3, 4 };
+            int[] nums4 = { 1, 2, 3, 4};
             int maxProduct = MaximumProduct(nums4);
             Console.WriteLine(maxProduct);
 
@@ -63,7 +64,11 @@ namespace Assignment_2
             try
             {
                 // Write your code here
-                return new List<int>(); // Placeholder
+                int n = nums.Length;
+                int[] arr = Enumerable.Range(1, n).ToArray();
+                nums = nums.Distinct().ToArray();
+                int[] arr2 = arr.Except(nums).ToArray();
+                return arr2; // Placeholder
             }
             catch (Exception)
             {
@@ -77,7 +82,20 @@ namespace Assignment_2
             try
             {
                 // Write your code here
-                return new int[0]; // Placeholder
+                List<int> arr = new List<int>();
+                foreach (int i in nums)
+                {
+                    if (i % 2 == 0)
+                    {
+                        arr.Add(i);
+                    }
+                }
+                foreach (int i in nums)
+                {
+                    if (i % 2 != 0) { arr.Add(i); }
+                }
+                int[] arr1 = arr.ToArray();
+                return arr1; // Placeholder
             }
             catch (Exception)
             {
@@ -91,7 +109,15 @@ namespace Assignment_2
             try
             {
                 // Write your code here
-                return new int[0]; // Placeholder
+                int[] arr = new int[2];
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    for (int j = i+1; j < nums.Length; j++)
+                    {
+                        if (nums[i] + nums[j] == target) { arr[0] = i; arr[1] = j; }
+                    }
+                }
+                return arr; // Placeholder
             }
             catch (Exception)
             {
@@ -105,7 +131,21 @@ namespace Assignment_2
             try
             {
                 // Write your code here
-                return 0; // Placeholder
+                int n = nums.Length;
+                List<int> products = new List<int>();
+                for (int i = 0; i < n-2; i++)
+                {
+                    for (int j = i + 1; j < n-1; j++)
+                    {
+                        for (int k = i + 2; k < n; k++)
+                        {
+                            products.Add(nums[i] * nums[j] * nums[k]);
+                        }
+
+                    }
+                }
+                int[] arr1 = products.ToArray();
+                return arr1.Max();  // Placeholder
             }
             catch (Exception)
             {
@@ -119,7 +159,8 @@ namespace Assignment_2
             try
             {
                 // Write your code here
-                return "101010"; // Placeholder
+                string x = Convert.ToString(decimalNumber, 2);
+                return x; // Placeholder
             }
             catch (Exception)
             {
@@ -133,7 +174,8 @@ namespace Assignment_2
             try
             {
                 // Write your code here
-                return 0; // Placeholder
+                int x = nums.Min();
+                return x; // Placeholder
             }
             catch (Exception)
             {
@@ -147,7 +189,27 @@ namespace Assignment_2
             try
             {
                 // Write your code here
-                return false; // Placeholder
+                string y = x.ToString();
+                int n = y.Length;
+                string y1;
+                string y2;
+                if (n % 2 == 0) 
+                { 
+                    y1 = y.Substring(0, n / 2); 
+                    y2 = y.Substring(n / 2, n/2);
+                    if (y1.CompareTo(y2) == 0) { return true; }
+                    else { return false; }
+                }
+                else
+                { 
+                    y1 = y.Substring(0, (n-1)/ 2); 
+                    y2 = y.Substring((n+1) / 2, (n-1)/2);
+                    y2 = new string(y2.Reverse().ToArray());
+                    if (y1.CompareTo(y2) == 0) { return true; } 
+                    else { return false; }
+                }
+                
+                     // Placeholder
             }
             catch (Exception)
             {
@@ -161,7 +223,14 @@ namespace Assignment_2
             try
             {
                 // Write your code here
-                return 0; // Placeholder
+                int[] Fib = new int[n+1];
+                Fib[0] = 0;
+                Fib[1] = 1;
+                for (int i = 2; i < n+1; i++)
+                {
+                    Fib[i] = Fib[i - 2] + Fib[i - 1];                
+                }
+                return Fib[n]; // Placeholder
             }
             catch (Exception)
             {
