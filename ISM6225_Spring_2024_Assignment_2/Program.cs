@@ -14,6 +14,7 @@ namespace Assignment_2
             IList<int> missingNumbers = FindMissingNumbers(nums1);
             Console.WriteLine(string.Join(",", missingNumbers));
 
+            Console.WriteLine("125".Reverse().ToArray());
 
             // Question 2: Sort Array by Parity
             Console.WriteLine("Question 2:");
@@ -201,6 +202,20 @@ namespace Assignment_2
             try
             {
                 // Write your code here
+                int i = 0;
+                int t = x;
+                while (t != 0)
+                {
+                    i = i * 10 + t % 10; 
+                    t = t / 10;
+                }
+                if (i == x) { return true; }
+                else { return false; }
+
+                // Placeholder
+                /* 
+                Below is my original way, a better way got but I just want to keep this to reminder me: think through before start
+                Even with tostring compare, y not i just reverse the whole string and compare it with the original?
                 string y = x.ToString();
                 int n = y.Length;
                 string y1;
@@ -224,8 +239,7 @@ namespace Assignment_2
                     if (y1.CompareTo(y2) == 0) { return true; } 
                     else { return false; }
                 }
-                
-                     // Placeholder
+                */
             }
             catch (Exception)
             {
