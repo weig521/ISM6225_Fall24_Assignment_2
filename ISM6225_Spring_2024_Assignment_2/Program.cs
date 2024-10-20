@@ -14,6 +14,7 @@ namespace Assignment_2
             IList<int> missingNumbers = FindMissingNumbers(nums1);
             Console.WriteLine(string.Join(",", missingNumbers));
 
+
             // Question 2: Sort Array by Parity
             Console.WriteLine("Question 2:");
             int[] nums2 = { 3, 1, 2, 4 };
@@ -65,8 +66,11 @@ namespace Assignment_2
             {
                 // Write your code here
                 int n = nums.Length;
+                // assign created 1 to n elements array to arr, learnt: Enumerable
                 int[] arr = Enumerable.Range(1, n).ToArray();
+                // Array.Distinct(): like 【set()】 in Python, find the unique values, then transfer numbers back to array
                 nums = nums.Distinct().ToArray();
+                // Array.Except(Array1): get the numbers that are in Array but no in Array1
                 int[] arr2 = arr.Except(nums).ToArray();
                 return arr2; // Placeholder
             }
@@ -83,6 +87,7 @@ namespace Assignment_2
             {
                 // Write your code here
                 List<int> arr = new List<int>();
+                //find the even numbers first and add to list
                 foreach (int i in nums)
                 {
                     if (i % 2 == 0)
@@ -90,10 +95,12 @@ namespace Assignment_2
                         arr.Add(i);
                     }
                 }
+                // find the odd numbers and add them into the list
                 foreach (int i in nums)
                 {
                     if (i % 2 != 0) { arr.Add(i); }
                 }
+                // have the list back to array
                 int[] arr1 = arr.ToArray();
                 return arr1; // Placeholder
             }
@@ -109,7 +116,9 @@ namespace Assignment_2
             try
             {
                 // Write your code here
+                // two integers known, create an array with length 2
                 int[] arr = new int[2];
+                // nested loop, better sort the input array nums first in real problem
                 for (int i = 0; i < nums.Length; i++)
                 {
                     for (int j = i+1; j < nums.Length; j++)
@@ -133,6 +142,7 @@ namespace Assignment_2
                 // Write your code here
                 int n = nums.Length;
                 List<int> products = new List<int>();
+                // three level nested loop, have all the numbers multiplied, store them in list, then find max
                 for (int i = 0; i < n-2; i++)
                 {
                     for (int j = i + 1; j < n-1; j++)
@@ -159,6 +169,7 @@ namespace Assignment_2
             try
             {
                 // Write your code here
+                // method to convert string to binary numbers
                 string x = Convert.ToString(decimalNumber, 2);
                 return x; // Placeholder
             }
@@ -174,6 +185,7 @@ namespace Assignment_2
             try
             {
                 // Write your code here
+                // find min in arrays
                 int x = nums.Min();
                 return x; // Placeholder
             }
@@ -193,10 +205,14 @@ namespace Assignment_2
                 int n = y.Length;
                 string y1;
                 string y2;
+                // in two situation: even palindrome like 1221 and odd palindrome like 12321
                 if (n % 2 == 0) 
                 { 
+                    // str.Substring(index,length) substring str from index with a length 
+                    // first part of string, compare with the reversed last part, if same, then palindrome
                     y1 = y.Substring(0, n / 2); 
                     y2 = y.Substring(n / 2, n/2);
+                    y2 = new string(y2.Reverse().ToArray());
                     if (y1.CompareTo(y2) == 0) { return true; }
                     else { return false; }
                 }
@@ -223,6 +239,7 @@ namespace Assignment_2
             try
             {
                 // Write your code here
+                // Classic fib problem, use iteration
                 int[] Fib = new int[n+1];
                 Fib[0] = 0;
                 Fib[1] = 1;
